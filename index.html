@@ -15,6 +15,36 @@
             canvas = document.getElementById("canvas");
             ctx = canvas.getContext('2d');
 
+            //Listening keyboard
+            document.addEventListener("keydown", (key) => {
+                console.log(key.keyCode);
+
+                //Left Code 37
+                //Up Code 38
+                //Right Code 39
+                //Down Code 40
+
+                //Snake Movimentation
+                switch (key.keyCode) {
+                    case 37:
+                        velX = -1;
+                        velY = 0;
+                        break;
+                    case 38:
+                        velX = 0;
+                        velY = -1;
+                        break;
+                    case 39:
+                        velX = 1;
+                        velY = 0;
+                        break;
+                    case 40:
+                        velX = 0;
+                        velY = 1;
+                        break;
+                }
+            });
+
             //Start Gane
             setInterval(jogo, 1000 / 10);
             // jogo();
