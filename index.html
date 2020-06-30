@@ -16,18 +16,24 @@
             ctx = canvas.getContext('2d');
 
             //Start Gane
-            jogo();
+            setInterval(jogo, 1000 / 10);
+            // jogo();
         }
 
         //Variables
-        grid = 20;
-        snake = [];
 
-        positionX = 10;
-        positionY = 10;
+        snake = []; //Snake
+        grid = 20; //Space Map
+        tam = 5 //Snake Size
+        positionX = 10; //Position X
+        positionY = 10; //Position Y
+        velX = 0; //Velocity X
+        velY = 0; // Velocity Y
 
         //Game
         function jogo() {
+            positionX += velX;
+            positionY += velY;
 
             //Map
             ctx.fillStyle = "#94ff94";
