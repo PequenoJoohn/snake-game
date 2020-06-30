@@ -55,8 +55,10 @@
         snake = []; //Snake
         grid = 20; //Space Map
         tam = 5 //Snake Size
-        positionX = 10; //Position X
-        positionY = 10; //Position Y
+        foodX = 10; //Food X
+        foodY = 10; //Food Y
+        positionX = 15; //Position X
+        positionY = 12; //Position Y
         velX = 0; //Velocity X
         velY = 0; // Velocity Y
 
@@ -90,6 +92,19 @@
             ctx.fillStyle = "black";
             for (var i = 0; i < snake.length; i++) {
                 ctx.fillRect(snake[i].x * grid, snake[i].y * grid, grid - 1, grid - 1)
+            }
+
+            while (snake.length > tam) {
+                snake.shift()
+            }
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(foodX * grid, foodY * grid, grid - 1, grid - 1);
+
+            if (positionX == foodX && positionY == foodY) {
+                tam++;
+                foodX = Math.floor(Math.random() * grid);
+                foodY = Math.floor(Math.random() * grid);
             }
         }
 
