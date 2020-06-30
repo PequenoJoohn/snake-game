@@ -62,8 +62,24 @@
 
         //Game
         function jogo() {
+
+            //Direction Move
             positionX += velX;
             positionY += velY;
+
+            //Through the wall
+            if (positionX < 0) {
+                positionX = grid;
+            }
+            if (positionX > grid) {
+                positionX = 0;
+            }
+            if (positionY < 0) {
+                positionY = grid;
+            }
+            if (positionY > grid) {
+                positionY = 0;
+            }
 
             //Map
             ctx.fillStyle = "#94ff94";
