@@ -5,10 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
+
+    <style>
+        * {
+            border: 0;
+            margin: 0;
+        }
+
+        body {
+            background: black;
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        div {
+            width: 400px;
+        }
+
+        h2 {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        p {
+            color: #fff;
+            font-weight: 700;
+            background-color: black;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
+    <div>
+        <h2>Snake Game</h2>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <p>Score: <span></span></p>
+    </div>
     <script>
         //Loading Canvas
         window.onload = function () {
@@ -17,7 +54,7 @@
 
             //Listening keyboard
             document.addEventListener("keydown", (key) => {
-                console.log(key.keyCode);
+                // console.log(key.keyCode);
 
                 //Left Code 37
                 //Up Code 38
@@ -54,13 +91,16 @@
 
         snake = []; //Snake
         grid = 20; //Space Map
-        tam = 3 //Snake Size
+        tam = 1 //Snake Size
         foodX = 10; //Food X
         foodY = 10; //Food Y
         positionX = 15; //Position X
         positionY = 12; //Position Y
         velX = 0; //Velocity X
         velY = 0; // Velocity Y
+
+        //Panel
+        score = document.querySelector('span');
 
         //Game
         function jogo() {
@@ -91,7 +131,8 @@
             ctx.fillStyle = "black";
             for (var i = 0; i < snake.length; i++) {
                 ctx.fillRect(snake[i].x * grid, snake[i].y * grid, grid - 1, grid - 1)
-                if(snake[i].x == positionX && snake[i].y == positionY) {
+                score.innerText = tam;
+                if (snake[i].x == positionX && snake[i].y == positionY) {
                     tam = 1;
                 }
             }
